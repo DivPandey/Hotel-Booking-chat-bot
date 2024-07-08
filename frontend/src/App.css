@@ -1,0 +1,133 @@
+:root {
+  --background-color: #fff;
+  --text-color: #000;
+  --input-background-color: #f0f0f0;
+  --input-text-color: #000;
+  --button-background-color: #007bff;
+  --button-text-color: #fff;
+  --user-message-background: #e6f2ff;
+  --assistant-message-background: #f0f0f0;
+}
+
+body.dark-mode {
+  --background-color: #121212;
+  --text-color: #ffffff;
+  --input-background-color: #333333;
+  --input-text-color: #ffffff;
+  --button-background-color: #444444;
+  --button-text-color: #ffffff;
+  --user-message-background: #1e88e5;
+  --assistant-message-background: #333333;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+.chat-interface {
+  display: flex;
+  flex-direction: column;
+  height: 590px; /* Adjusted height */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.chat-messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ccc;
+}
+
+.chat-input input {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 5px;
+  background-color: var(--input-background-color);
+  color: var(--input-text-color);
+  border: none;
+  border-radius: 3px;
+}
+
+.chat-input button {
+  padding: 5px 10px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  border: none;
+  border-radius: 3px;
+}
+
+.message {
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.message.user {
+  background-color: var(--user-message-background);
+  text-align: right;
+}
+
+.message.assistant {
+  background-color: var(--assistant-message-background);
+}
+
+/* Dark Mode Button */
+.dark-mode-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--button-background-color);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dark-mode-toggle img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 600px) {
+  .App {
+    padding: 10px;
+  }
+
+  .chat-interface {
+    height: 580px; /* Adjusted height */
+  }
+
+  .chat-input {
+    flex-direction: column;
+  }
+
+  .chat-input input {
+    margin: 0 0 10px 0;
+  }
+}
