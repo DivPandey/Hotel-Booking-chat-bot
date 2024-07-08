@@ -25,15 +25,14 @@ const functions = [
       type: "object",
       properties: {
         roomId: { type: "number" },
-        guests: { 
+        fullName: { 
           type: "array",
           items: { type: "object", properties: { name: { type: "string" }}}
         },
-        mobile: { type: "string" },
         email: { type: "string" },
         nights: { type: "number" }
       },
-      required: ["roomId", "guests", "mobile", "email", "nights"]
+      required: ["roomId", "fullName", "email", "nights"]
     }
   }
 ];
@@ -43,7 +42,7 @@ async function getChatCompletion(messages) {
     // Add system prompt to restrict the model's responses to hotel booking queries
     messages.unshift({
       role: "system",
-      content: "You are a hotel booking assistant. Only respond to queries related to hotel room bookings and reservations."
+      content: "You are a hotel booking assistant. Only and only respond to queries related to hotel room bookings and reservations other than that please dont respond."
     });
 
     const response = await openai.chat.completions.create({
@@ -65,8 +64,7 @@ async function getChatCompletion(messages) {
       } else if (functionName === "book_room") {
         functionResult = await bookRoom(
           functionArgs.roomId,
-          functionArgs.guests,
-          functionArgs.mobile,
+          functionArgs.fullName,
           functionArgs.email,
           functionArgs.nights
         );

@@ -40,7 +40,7 @@ const ChatInterface = () => {
         const botMessage = { role: 'assistant', content: response.data.response };
         setMessages(prevMessages => [...prevMessages, botMessage]);
       } catch (error) {
-        console.error('Error sending message:', error);
+        // console.error('Error sending message:', error);
         setMessages(prevMessages => [...prevMessages, { role: 'assistant', content: 'Sorry, there was an error processing your request.' }]);
       }
     }

@@ -9,12 +9,12 @@ const transporter = nodemailer.createTransport({
 });
 
 async function sendConfirmationEmail(email, bookingDetails) {
-  const { bookingId, guests, userMobile } = bookingDetails;
+  const { bookingId, fullName } = bookingDetails;
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: email,
     subject: 'Booking Confirmation',
-    text: `Thank you for your booking! Your booking details:\n\nBooking ID: ${bookingId}\nGuests: ${guests.join(', ')}\nMobile: ${userMobile}`
+    text: `Thank you for your booking! Your booking details:\n\nBooking ID: ${bookingId}\nGuests: ${fullName.join(', ')}`
   };
 
   try {

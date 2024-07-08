@@ -10,12 +10,11 @@ async function getRooms() {
   }
 }
 
-async function bookRoom(roomId, guests, mobile, email, nights) {
+async function bookRoom(roomId, fullName, email, nights) {
   try {
     const response = await axios.post('https://bot9assignement.deno.dev/book', {
       roomId,
-      guests,
-      mobile,
+      fullName,
       email,
       nights
     });

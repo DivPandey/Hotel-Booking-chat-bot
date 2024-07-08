@@ -24,15 +24,13 @@ async function chat(req, res) {
     if (bookingMatch) {
       const bookingId = bookingMatch[1];
       const emailMatch = message.match(/email: (\S+@\S+\.\S+)/);
-      const mobileMatch = message.match(/mobile: (\d+)/);
-      const guestsMatch = message.match(/guests: (.*)/);
+      const fullNameMatch = message.match(/fullName: (.*)/);
 
-      if (emailMatch && mobileMatch && guestsMatch) {
+      if (emailMatch && fullNameMatch) {
         const userEmail = emailMatch[1];
-        const userMobile = mobileMatch[1];
-        const guests = guestsMatch[1].split(',').map(name => name.trim());
+        const fullName = fullNameMatch[1].split(',').map(name => name.trim());
 
-        await sendConfirmationEmail(userEmail, { bookingId, guests, userMobile });
+        await sendConfirmationEmail(userEmail, { bookingId, fullName });
       }
     }
 
